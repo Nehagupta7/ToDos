@@ -9,7 +9,7 @@
     
 
 }
- #container{
+ body{
     height: 100vh;
     width:100%;
     background-color:var(--green-color);
@@ -38,7 +38,7 @@ header{
 }
 #heading{
    
-    font-size: 50px;
+    font-size: 3rem;
     padding-top: 23px;
     
 }
@@ -59,25 +59,76 @@ header{
    background-color:var(--purple-color);
    border-radius:60px;
 }
-#textarea{
-    height: 150px;
-    width: 250px;
-    margin:23px;
-    font-size: 23px;
-    padding:22px;
-}
-#notes  i {
-  font-size: 19px;
-  padding:8px;
+
+.note {
+  display: flex;
+  font-size: 1.4rem;
+ display:flex;
+  margin:13px 3px 4px 443px; 
  
 }
-#notes {
-    height: 30px;
-    width: 350px;
-    display: flex;
-    border-radius: 4px;
-   position: fixed;
-  left:40%;
-  right:50%;
- bottom:10px;
+.inputToDo{
+  height:35px;
+  width:430px; 
+  padding:13px;
+  border-radius:6px;
+
+position: relative;
+
+}
+button{
+  height:35px;
+  width:45px;
+  margin-left:4px;
+  border-radius:6px;
+  font-size:24px;
+  display: absolute;
+}
+
+.deleteToDo{
+  color:red;
+  align-items: center;
+}
+.editToDo{
+  color:green;
+  align-items: center;
+}
+.deleteToDo:hover{
+  color:white;
+  background-color: red;;
+ 
+}
+.editToDo:hover{
+  color:white;
+  background-color: green;
+ 
+}
+
+@media (max-width:700px){
+ body{
+    height: 100vh;
+    width:100%;
+  
+ }
+header{
+    width:800px;
+    height: 150px;
+}
+#day-date{
+    font-size:24px;
+    }
+#addToDo{
+  display:blockblock;
+    margin:20px 23px 30 30px;
+}
+#addToDo i{
+  padding-right:7px;
+
+}
+
+.note{
+  position:relative;
+  display:inline-flex;
+ margin:auto 84px 14px;
+}
 }
