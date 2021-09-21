@@ -94,7 +94,6 @@ inputArea.addEventListener("change", (event) => {
   const value = event.target.value;
   console.log(value);
   inputArea.value = value;
-  
   updateLsData();
 });
 
@@ -105,9 +104,8 @@ let notes = JSON.parse(localStorage.getItem("notes"));
 console.log(notes);
     
 if (notes) {
-  
- 
-//    }
-  
+  notes.forEach(note => {
+    addNote(note);
+  });
   updateLsData();
 }
