@@ -84,7 +84,7 @@ button {
   body {
     height: 100vh;
     width: 100%;
-    color: green;
+  
   }
   header {
     height: 150px;
@@ -106,7 +106,7 @@ button {
   body {
     height: 100vh;
     width: 100%;
-    color: blue;
+  
   }
   header {
     width: 100%;
@@ -135,7 +135,7 @@ button {
   body {
     height: 100vh;
     width: 100%;
-    color: red;
+  
   }
   header {
     width: 100%;
@@ -146,7 +146,8 @@ button {
   }
 
   #heading {
-    font-size: 1.7rem;
+    padding:20px 0 4px 5px;
+    font-size: 1.5rem;
     margin: 13px 6px 13px 3px;
   }
 

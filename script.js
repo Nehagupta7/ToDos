@@ -27,6 +27,7 @@ let fullDate = new Date().toDateString().slice(3);
 todayDate.innerHTML = fullDate;
 
 /////////////////////////////////////////
+
 const updateLsData = () => {
   const inputArea = document.querySelectorAll("input");
   const notes = [];
@@ -35,11 +36,12 @@ const updateLsData = () => {
   });
 
   console.log(notes);
-  localStorage.setItem("notes", JSON.stringify(notes));
+  localStorage.setItem('notes', JSON.stringify(notes));
 };
 
 const addNote = () => {
   // create div element
+  
   let note = document.createElement("div");
   note.classList.add("note");
   const htmlData = `<input
@@ -91,8 +93,8 @@ deleteToDo.addEventListener("click", () => {
 inputArea.addEventListener("change", (event) => {
   const value = event.target.value;
   console.log(value);
-  inputArea.innerHTML = value;
-  console.log();
+  inputArea.value = value;
+  
   updateLsData();
 });
 
@@ -101,9 +103,17 @@ addToDos.addEventListener("click", () => addNote());
 // get element from the local storage
 let notes = JSON.parse(localStorage.getItem("notes"));
 console.log(notes);
+debugger;    
 if (notes) {
-  notes.forEach((note) => {
-    addNote(note);
-  });
+  
+
+for (let i=0 ;i<notes.length;i++)
+  {
+const vom = note.querySelectorAll(".inputTODO").value=`${notes[i]}`;
+inputArea.value=vom;
+console.log(vom);
+ 
+   }
+  
   updateLsData();
 }
