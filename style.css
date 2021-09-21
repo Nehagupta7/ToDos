@@ -4,13 +4,15 @@
   box-sizing: border-box;
 }
 :root {
-  --green-color: #23a083;
-  --purple-color: #500472;
+
+  --header-color: #8b84b74d;
+  --footer-color: #2e2a4a;
+
 }
 body {
   height: 100vh;
   width: 100%;
-  background-color: var(--green-color);
+  background-color: var(--header-color);
   color: white;
   /* transition: all 0.1 ease-in; */
 }
@@ -19,7 +21,7 @@ header {
   height: 150px;
   display: flex;
   justify-content: space-between;
-  background-color: var(--purple-color);
+  background-color: var(--footer-color);
 }
 #day-date {
   display: inline-block;
@@ -28,6 +30,10 @@ header {
   padding: 24px;
   margin: 13px 65px 5px 45px;
   font-size: 1.5rem;
+}
+#today{
+ margin:-14px 0px 29px 14px;
+
 }
 #heading {
   font-size: 3rem;
@@ -38,7 +44,7 @@ header {
 }
 
 #addToDo:hover {
-  color: var(--purple-color);
+  color: var(--footer-color);
 }
 .note {
   display: flex;
