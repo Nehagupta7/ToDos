@@ -1,52 +1,50 @@
-const dayName=document.querySelector('#today');
-const todayDate=document.querySelector('#date');
-const note=document.querySelector('.note');
-const addToDos=document.querySelector('#addToDo');
-const inputArea=note.querySelector('input');
- const mainDiv=note.querySelector('.main');
- const editToDo=note.querySelector('.editToDo');
- const deleteToDo=note.querySelector('.deleteALL');
+const dayName = document.querySelector("#today");
+const todayDate = document.querySelector("#date");
+const note = document.querySelector(".note");
+const addToDos = document.querySelector("#addToDo");
+const inputArea = note.querySelector("input");
+const mainDiv = note.querySelector(".main");
+const editToDo = note.querySelector(".editToDo");
+const deleteToDo = note.querySelector(".deleteALL");
 
 console.log();
-//get days name 
-let nameOfDays=["Sunday","Monday","Tueday","Wednesday","Thrusday","Friday","Saturday"]
-let  dayNoStore= new Date().getDay();
+//get days name
+let nameOfDays = [
+  "Sunday",
+  "Monday",
+  "Tueday",
+  "Wednesday",
+  "Thrusday",
+  "Friday",
+  "Saturday",
+];
+let dayNoStore = new Date().getDay();
 let finalDayName = nameOfDays[dayNoStore];
-dayName.innerHTML=finalDayName;
+dayName.innerHTML = finalDayName;
 
 //get month date and year
 let fullDate = new Date().toDateString().slice(3);
-todayDate.innerHTML=fullDate;
+todayDate.innerHTML = fullDate;
 
 /////////////////////////////////////////
-const updateLsData = () =>{
-  const inputArea=document.querySelectorAll('input');
-  const notes=[];
-  inputArea.forEach((note) =>{ return notes.push(note.value);
+const updateLsData = () => {
+  const inputArea = document.querySelectorAll("input");
+  const notes = [];
+  inputArea.forEach((note) => {
+    return notes.push(note.value);
   });
-  
-console.log(notes);
-localStorage.setItem('notes',JSON.stringify(notes));
-// inputArea.addEventListener('change',(event)=>{
-//   const value=event.target.value;
-//   console.log(value);
-// });
-}
-updateLsData();
- const notes=JSON.parse(localStorage.getItem('notes'));
- if(notes){
-   notes.forEach((note)=>(note));
- }
 
+  console.log(notes);
+  localStorage.setItem("notes", JSON.stringify(notes));
+};
 
-
-addToDos.addEventListener("click" ,(e) => {
-if(inputArea.value.trim()) {
-   let note = document.createElement('div');
-    note.classList.add('note');
-    const htmlData = `<input
+const addNote = () => {
+  // create div element
+  let note = document.createElement("div");
+  note.classList.add("note");
+  const htmlData = `<input
     type="text"
-    name="test"  value="${inputArea.value}" "
+    name="test"  value="${inputArea.value}" 
     class="inputToDo"
     placeholder="Add ToDos Here.." 
   
@@ -59,41 +57,53 @@ if(inputArea.value.trim()) {
 <i class="fa fa-check" aria-hidden="true"></i>
 </button>
 `;
-note.insertAdjacentHTML('afterbegin', htmlData);
-document.body.appendChild(note);
-console.log(note);
+  note.insertAdjacentHTML("afterbegin", htmlData);
+  document.body.appendChild(note);
+  console.log(note);
+  // end of div
+  //div element has  note class  and add some button task
+  note.addEventListener("click", function (e) {
+    var item = e.target;
+    console.log(item.classList[1]);
 
-note.addEventListener('click',function(e){
-var item=e.target;
-console.log(item.classList[1]);
+    if (item.classList[1] == "fa-trash") {
+      note.remove();
+      updateLsData();
+    } else if (item.classList[1] == "fa-check") {
+      const completed = (note.querySelector("input").disabled = "true");
+      console.log(completed);
+    }
+  });
 
-if(item.classList[1]=='fa-trash'){
-note.remove();
-updateLsData();
-}
-else if(item.classList[1]== 'fa-check'){
-  const completed=note.querySelector('input').disabled="true";
-  // completed.classList.toggle('hidden');
-console.log(completed);
-} 
- });
+  inputArea.value = "";
+};
 
- inputArea.value ='';
+// delete all the to dos
+deleteToDo.addEventListener("click", () => {
+  let deleteAllToDo = document.querySelectorAll(".note");
+  for (let i = 1; i < deleteAllToDo.length; i++) {
+    deleteAllToDo[i].remove();
+    updateLsData();
+  }
+});
+// get item from local storage
 
-}else if (inputArea.value==""){
-alert("enter some text");
-}});
-
-// delete all the to dos 
-deleteToDo.addEventListener('click', () => {
-let  deleteAllToDo=document.querySelectorAll('.note');
-for(let i=1;i<deleteAllToDo.length;i++){
-deleteAllToDo[i].remove();
-updateLsData();
-}
+inputArea.addEventListener("change", (event) => {
+  const value = event.target.value;
+  console.log(value);
+  inputArea.innerHTML = value;
+  console.log();
+  updateLsData();
 });
 
-
-
-console.log(finalDayName );
-console.log(fullDate);
+//click event for add notes
+addToDos.addEventListener("click", () => addNote());
+// get element from the local storage
+let notes = JSON.parse(localStorage.getItem("notes"));
+console.log(notes);
+if (notes) {
+  notes.forEach((note) => {
+    addNote(note);
+  });
+  updateLsData();
+}
