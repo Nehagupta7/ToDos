@@ -142,7 +142,7 @@ button {
   body {
     height: 100vh;
     width: 100%;
-  
+
   }
   header {
     width: 100%;
@@ -164,9 +164,16 @@ button {
     margin: 0 0 0 -130px;
   }
   button {
-    height: 30px;
-    width: 34px;
+    height: 22px;
+    width: 25px;
+    font-size:0.8rem;
+    align-items:center;
+    justify-content:center;
+    font-weight:bolder;
+    padding:auto;
+    margin:4px 2px 2px 2px;
   }
+  
 }
 @media(max-width:350px){
   header {
