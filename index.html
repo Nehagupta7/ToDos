@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="theme-color" content="#34af22" />
+    <meta name="theme-color" content="#2e2a4a" />
+    <meta name="msapplication-navbar-color" content="#2e2a4a" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
@@ -14,12 +15,12 @@
     <title>To Do</title>
   </head>
   <body>
-    <!-- Start conatiner of all the element  -->
+                                              <!-- Start conatiner of all the element  -->
     <div id="container">
-      <!-- Start header section -->
-      <header id="title-of-document">
+  <!-- Start header section -->
+      <header id="title-of-todos">
         <!-- heading of the todos -->
-        <h2 id="heading">
+        <h2 id="heading-of-todos">
           <i class="fa fa-sticky-note" aria-hidden="true"></i>To Dos
         </h2>
         <!-- date and day show in the header  -->
@@ -31,9 +32,9 @@
         </div>
       </header>
       <!-- End  Header section  -->
+      
       <!-- notes section Start -->
-
-      <div class="note">
+     <div class="note">
         <input
           type="text"
           name="test"
@@ -41,21 +42,16 @@
           class="inputToDo"
           placeholder="Add ToDos Here.."
         />
-
-        <button class="deleteALL deleteToDo button">
+        <button id="deleteToDo"class="deleteALL deleteToDo button">
           <i class="fa fa-times" aria-hidden="true"></i>
         </button>
-
         <!-- Add notes button -->
-
         <button id="addToDo" class="deleteALL addBtn button">
           <i class="fa fa-plus" aria-hidden="true"></i>
         </button>
       </div>
-
       <!-- notes section End -->
     </div>
-
     <!-- End conatiner of all the element  -->
 
     <script src="script.js" defer="true"></script>

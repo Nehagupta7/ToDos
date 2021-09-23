@@ -7,14 +7,12 @@
 
   --header-color: #8b84b74d;
   --footer-color: #2e2a4a;
-
 }
 body {
   height: 100vh;
   width: 100%;
   background-color: var(--header-color);
   color: white;
-  /* transition: all 0.1 ease-in; */
 }
 header {
   width: 100%;
@@ -33,13 +31,12 @@ header {
 }
 #today{
  margin:-14px 0px 29px 14px;
-
 }
-#heading {
+#heading-of-todos {
   font-size: 3rem;
   padding-top: 23px;
 }
-#heading i {
+#heading-of-todos i {
   padding: 23px;
 }
 
@@ -49,7 +46,6 @@ header {
 .note {
   display: flex;
   font-size: 1.4rem;
-  display: flex;
   margin: 13px 3px 4px 443px;
 }
 .inputToDo {
@@ -58,6 +54,8 @@ header {
   padding: 13px;
   border-radius: 6px;
 margin:0 0 0 -200px ;
+justify-content: center;
+align-items: center;
   position: relative;
 }
 button {
@@ -67,6 +65,8 @@ button {
   border-radius: 6px;
   font-size: 24px;
   display: absolute;
+  transition: all 0.2s ease-in;
+
 }
 
 .deleteToDo {

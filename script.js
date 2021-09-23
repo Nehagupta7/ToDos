@@ -1,15 +1,15 @@
 const dayName = document.querySelector("#today");
 const todayDate = document.querySelector("#date");
-const note = document.querySelector(".note");
+const noteClassOfDiv = document.querySelector(".note");
 const addToDos = document.querySelector("#addToDo");
-const inputArea = note.querySelector("input");
-const mainDiv = note.querySelector(".main");
-const editToDo = note.querySelector(".editToDo");
-const deleteToDo = note.querySelector(".deleteALL");
+const inputArea = noteClassOfDiv.querySelector("input");
+const mainDiv = noteClassOfDiv.querySelector(".main");
+const editToDo = noteClassOfDiv.querySelector(".editToDo");
+const deleteToDo = noteClassOfDiv.querySelector(".deleteALL");
+const inputOfAllInput = noteClassOfDiv.querySelector("input");
 
-console.log();
 //get days name
-let nameOfDays = [
+let nameOfweeks = [
   "Sunday",
   "Monday",
   "Tueday",
@@ -18,8 +18,8 @@ let nameOfDays = [
   "Friday",
   "Saturday",
 ];
-let dayNoStore = new Date().getDay();
-let finalDayName = nameOfDays[dayNoStore];
+let dayNumberStore = new Date().getDay();
+let finalDayName = nameOfweeks[dayNumberStore];
 dayName.innerHTML = finalDayName;
 
 //get month date and year
@@ -27,33 +27,33 @@ let fullDate = new Date().toDateString().slice(3);
 todayDate.innerHTML = fullDate;
 
 /////////////////////////////////////////
-
+// update local storage data.and empty array [notes] store the input value
 const updateLsData = () => {
-  const inputArea2 = document.querySelectorAll(".inputToDo");
+  const noteClassOfInput= document.querySelectorAll(".inputToDo");
   const notes = [];
-  inputArea2.forEach((note) => {
-    return notes.push(note.value);
+  noteClassOfInput.forEach((input) => {
+  notes.push(input.value);
   });
-
-  console.log(notes);
-  localStorage.setItem('notes', JSON.stringify(notes));
+  localStorage.setItem('notes', JSON.stringify(notes)); 
 };
 
-const addNote = () => {
-  // create div element
-  
+const addnote = () => {
+if(inputArea.value.trim()){
   let note = document.createElement("div");
   note.classList.add("note");
   const htmlData = `<input
     type="text"
     name="test"  value="${inputArea.value}" 
     class="inputToDo"
-    placeholder="Add ToDos Here.." 
+    placeholder="Add ToDos Here.." contentEditable = "true"
   
-  />
+ />
 
 <button class="deleteToDo button">
   <i class="fa fa-trash" aria-hidden="true"> </i>
+</button>
+<button class="editToDo button">
+  <i class="fa fa-pencil-square-o" aria-hidden="true"> </i>
 </button>
 <button class="editToDo button">
 <i class="fa fa-check" aria-hidden="true"></i>
@@ -62,50 +62,58 @@ const addNote = () => {
   note.insertAdjacentHTML("afterbegin", htmlData);
   document.body.appendChild(note);
   console.log(note);
-  // end of div
+  // end of div element creation
   //div element has  note class  and add some button task
   note.addEventListener("click", function (e) {
     var item = e.target;
-    console.log(item.classList[1]);
-
     if (item.classList[1] == "fa-trash") {
       note.remove();
       updateLsData();
-    } else if (item.classList[1] == "fa-check") {
-      const completed = (note.querySelector("input").disabled = "true");
+    } else if (item.classList[1] == "fa-pencil-square-o") {
+  const selectInput= note.querySelector("input");
+let editInput=prompt("edit this",selectInput.value)
+selectInput.value=editInput;
+updateLsData();
+    }else if (item.classList[1] == "fa-check") {
+      const completed = (note.querySelector("input").readOnly = "true");
       console.log(completed);
     }
+  
   });
-
+}
+else if(inputArea.value===""){
+  alert("enter some todos");
+}
   inputArea.value = "";
-};
+}
 
 // delete all the to dos
 deleteToDo.addEventListener("click", () => {
-  let deleteAllToDo = document.querySelectorAll(".note");
-  for (let i = 1; i < deleteAllToDo.length; i++) {
+ let deleteAllToDo = document.querySelectorAll(".note");
+ for (let i = 1; i < deleteAllToDo.length; i++) 
+  {
     deleteAllToDo[i].remove();
     updateLsData();
   }
 });
 
-
+//input area value store in input element value
 inputArea.addEventListener("change", (event) => {
   const value = event.target.value;
-  console.log(value);
   inputArea.value = value;
   updateLsData();
 });
+//click event on button for add notes 
+addToDos.addEventListener("click", () => addnote());
 
-//click event for add notes
-addToDos.addEventListener("click", () => addNote());
 // get element from the local storage
-let notes = JSON.parse(localStorage.getItem("notes"));
-console.log(notes);
-    
+//notes get from local storage and store on notes 
+let notes = JSON.parse(localStorage.getItem("notes"));  
+//if condition check if  notes are present than forEach loop store value in inputdata
 if (notes) {
   notes.forEach(note => {
-    addNote(note);
+  inputOfAllInput.value = note;
+   addnote(note);
   });
-  updateLsData();
+  updateLsData( );
 }
