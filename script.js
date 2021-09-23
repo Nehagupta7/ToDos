@@ -45,7 +45,7 @@ if(inputArea.value.trim()){
     type="text"
     name="test"  value="${inputArea.value}" 
     class="inputToDo"
-    placeholder="Add ToDos Here.." contentEditable = "true"
+    placeholder="Add ToDos Here.." 
   
  />
 
