@@ -26,7 +26,7 @@ header {
   align-items: center;
   justify-content: center;
   padding: 24px;
-  margin: 13px 65px 5px 45px;
+  margin: auto;
   font-size: 1.5rem;
 }
 #today{
@@ -48,11 +48,25 @@ header {
   font-size: 1.4rem;
   margin: 13px 3px 4px 443px;
 }
+.note input[type="text"] {
+ background-color:transparent; 
+ outline:none;
+ border:none;
+ border:2px solid dodgerblue;
+
+
+}
+input[type="text"]:focus{
+border-color:dodgerblue;
+box-shadow:0 0 8px 0 dodgerblue;
+transition:0.2s;
+}
+
 .inputToDo {
   height: 35px;
   width: 500px;
   padding: 13px;
-  border-radius: 6px;
+  border-radius:9px;
 margin:0 0 0 -200px ;
 justify-content: center;
 align-items: center;
@@ -66,13 +80,26 @@ button {
   font-size: 24px;
   display: absolute;
   transition: all 0.2s ease-in;
-   outline: none;
- 
+  outline: none;
+ border:2px solid ;
+
+}
+button:hover{
+  border-color:initial;
+box-shadow:0 0 8px 0 dodgerblue;
+transition:0.2s;
 }
 
 .deleteToDo {
   color: red;
   align-items: center;
+}
+
+button:focus{
+border-color:initial;
+box-shadow:0 0 8px 0  initial;
+
+transition:0.2s;
 }
 .editToDo {
   color: green;
@@ -142,22 +169,28 @@ button {
   body {
     height: 100vh;
     width: 100%;
-
   }
   header {
     width: 100%;
   }
   #day-date {
     font-size: 1em;
-    margin: 23px 3px 4px -24px;
+    margin: 43px 59px 0 0;
+    float:left;
+    display: inline;
+    align-items:center;
+    justify-content:center;
   }
 
   #heading-of-todos {
-    padding:20px 0 4px 5px;
+    display:block;
+    padding: 0 1px  0 0;
     font-size: 1.5rem;
-    margin: 13px 6px 13px 3px;
+    margin: 0 2px 2px 0;
   }
-
+#heading-of-todos i{
+  padding:20px 9px 0 9px;
+}
   .note > input {
     height: 30px;
     width: 250px;
@@ -174,9 +207,4 @@ button {
     margin:4px 2px 2px 2px;
   }
   
-}
-@media(max-width:350px){
-  header {
-    width: 340px;
-  }
 }
