@@ -180,10 +180,6 @@ button > * {
   background-color: red;
 }
 @media (max-width: 70rem) {
-  #title-of-todos {
-    color: red;
-  }
-
   .note {
     margin: 1rem 1rem 1rem 12.5rem;
   }
@@ -191,7 +187,6 @@ button > * {
 @media (max-width: 50rem) {
   #title-of-todos {
     width: 100%;
-    color: green;
   }
   .note {
     margin: 1rem 1rem 1rem 3rem;
@@ -199,7 +194,6 @@ button > * {
   .inputContainer input[type="text"] {
     width: 21rem;
     margin: 3rem 1rem 1rem -7rem;
-    /*     height:5rem; */
   }
   #heading-of-todos {
     font-size: 1.9rem;
@@ -223,10 +217,14 @@ button > * {
 @media (max-width: 25rem) {
   #title-of-todos {
     width: 100vw;
-    color: yellow;
   }
   #heading-of-todos {
-    font-size: 1.9rem;
+    font-size: 1.3rem;
+    margin: 2rem 1rem 2rem 0.5rem;
+  }
+  #heading-of-todos i {
+    font-size: 1rem;
+    padding: 0.5rem;
   }
   #today {
     all: unset;
@@ -234,44 +232,41 @@ button > * {
   #day-date {
     all: unset;
     display: inline;
-    margin: 3rem 5rem 0 0;
-    font-size: 1.5rem;
+    margin: 3.5rem 1rem 0.1rem 0.1rem;
+    font-size: 1rem;
   }
 
   .inputContainer input[type="text"] {
     height: 2rem;
-    width: 19rem;
-    margin: 2rem 6rem 0rem 2rem;
+    width: 17rem;
+    margin: 2rem 6rem 0rem 1.5rem;
   }
   #addToDo {
     width: 3rem;
-    margin: 4rem 1rem 2rem 14rem;
+    margin: 4rem 1rem 2rem 10.5rem;
   }
   .inputContainer .clearAll {
     width: 4rem;
     height: 1.9rem;
-
     font-size: 0.9rem;
-    margin: 4rem 1rem 2rem 22rem;
+    margin: 4rem 1rem 2rem 18.4rem;
   }
   .note {
-    margin: 1rem auto;
-  width:23rem;
-
+    margin: 3rem auto;
+    width: 20rem;
   }
-  .note #editToDo, #saveToDo {
-    margin: 3rem 2rem 3rem 20rem;
+  .note #editToDo,
+  #saveToDo {
+    margin: 3rem 2rem 3rem 17rem;
     color: green;
-}
-.note #deleteToDo{
-    margin: 3rem 2rem 3rem 17.5rem;
-  
-}
+  }
+  .note #deleteToDo {
+    margin: 3rem 2rem 3rem 14.7rem;
+  }
 }
 @media (max-width: 15rem) {
   #title-of-todos {
     width: 100%;
-    color: white;
   }
   #heading-of-todos {
     font-size: 1.9rem;
