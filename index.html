@@ -29,13 +29,13 @@
 
       <!-- notes section Start -->
       <div class="inputContainer">
-        <!-- <form onsubmit=" addNote(); return false "> -->
+        <!-- <form onsubmit="event.preventDefault() "> -->
         <input
           type="text"
           name="test"
-          value=""
           class="inputToDo"
-          placeholder="Add ToDos Here.."
+          placeholder="ToDos Here..(only 20 character)"
+          maxlength="20"
           onchange=" addnote()"
         />
 
