@@ -70,13 +70,6 @@ const addnote = () => {
       var item = e.target;
       console.log(item.classList[0]);
       switch (item.classList[0]) {
-        case "liTagInput":
-          if (liTagInput.checked == true) {
-            deleteToDo.style.display = "block";
-          } else if (liTagInput.checked == false) {
-            deleteToDo.style.display = "none";
-          }
-          break;
         case "editToDo":
           spanTag.contentEditable = "true";
           saveToDo.style.display = "block";
@@ -96,7 +89,25 @@ const addnote = () => {
       }
     });
   } else if (inputArea.value === "") {
-    inputArea.placeholder = "please enter some input!!!!!!!";
+    function removeAlertMessage() {
+      alertDiv.remove();
+    }
+    const alertDiv = document.createElement("div");
+    alertDiv.classList.add("alert");
+    alertDiv.innerHTML = "please enter some todos!!!";
+    document.body.appendChild(alertDiv);
+
+    const okButton = document.createElement("button");
+    okButton.classList.add("okButton");
+    okButton.innerText = "Ok";
+    alertDiv.appendChild(okButton);
+
+    console.log(okButton);
+    console.log(alertDiv);
+    okButton.addEventListener("click", () => {
+      alertDiv.remove();
+    });
+    setTimeout(removeAlertMessage, 3000);
   }
   inputArea.value = "";
   updateLsData();
