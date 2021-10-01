@@ -60,6 +60,26 @@ header {
   color: white;
   font-size: 1.6rem;
 }
+.alert {
+  height: 10rem;
+  width: 10rem;
+  display: block;
+  margin: 0 auto;
+  border: 0.1rem solid black;
+  color: black;
+  font-size: bolder;
+  padding: 2rem;
+  color: red;
+  background-color: #b5b5b5;
+  border-radius: 1rem;
+}
+.okButton {
+  background-color: blue;
+  margin: 2rem auto;
+  width: 5rem;
+  color: white;
+}
+
 /* inpu button */
 
 .inputContainer {
@@ -152,6 +172,7 @@ li span {
 }
 button > * {
   pointer-events: none;
+  clear: both;
 }
 
 .note #editToDo,
@@ -165,7 +186,6 @@ button > * {
 .note #deleteToDo {
   color: red;
   margin: 2rem 2rem 2rem 24rem;
-  display: none;
 }
 .note #editToDo:hover {
   color: white;
