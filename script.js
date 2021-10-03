@@ -5,6 +5,7 @@ const addToDos = noteClass.querySelector("#addToDo");
 const inputArea = noteClass.querySelector("input");
 const editToDo = noteClass.querySelector(".editToDo");
 const clearAll = noteClass.querySelector("#clearAll");
+const form = document.querySelector("#form");
 
 //get days name
 let nameOfweeks = [
@@ -41,7 +42,7 @@ const addnote = () => {
     const htmlData = `
     <li  class ="liTag" >
     <input type="checkbox"  class=" liTagInput">
-    <span class="spanTag"> ${inputArea.value} </span> </li>
+    <span class="spanTag" > ${inputArea.value} </span> </li>
 
 <button class="deleteToDo button" id="deleteToDo">
   <i class="fa fa-trash" aria-hidden="true"> </i>
@@ -57,13 +58,10 @@ const addnote = () => {
     note.insertAdjacentHTML("afterbegin", htmlData);
     document.body.appendChild(note);
     console.log(note);
-    // getting refernce fa-chech
-    const litag = note.querySelector(".liTag");
-    const liTagInput = note.querySelector(".liTagInput");
-    const deleteToDo = note.querySelector(".deleteToDo");
+    // getting refernce
     const saveToDo = note.querySelector(".saveToDo");
-    const editToDo = note.querySelector(".editToDo");
     const spanTag = note.querySelector(".spanTag");
+    inputArea.value = "";
 
     // end of div element creation
     note.addEventListener("click", function (e) {
@@ -88,10 +86,7 @@ const addnote = () => {
           break;
       }
     });
-  } else if (inputArea.value === "") {
-    function removeAlertMessage() {
-      alertDiv.remove();
-    }
+  } else if (inputArea.value.length === 0) {
     const alertDiv = document.createElement("div");
     alertDiv.classList.add("alert");
     alertDiv.innerHTML = "please enter some todos!!!";
@@ -102,14 +97,14 @@ const addnote = () => {
     okButton.innerText = "Ok";
     alertDiv.appendChild(okButton);
 
-    console.log(okButton);
-    console.log(alertDiv);
     okButton.addEventListener("click", () => {
       alertDiv.remove();
     });
-    setTimeout(removeAlertMessage, 3000);
+
+    setTimeout(() => {
+      alertDiv.remove();
+    }, 3000);
   }
-  inputArea.value = "";
   updateLsData();
 };
 
@@ -122,8 +117,14 @@ clearAll.addEventListener("click", () => {
   });
 });
 
+//form event
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+});
+
 //click event on button for add notes
 addToDos.addEventListener("click", () => addnote());
+
 // get element from the local storage
 let notes = JSON.parse(localStorage.getItem("notes"));
 if (notes) {
