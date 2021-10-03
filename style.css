@@ -45,11 +45,9 @@ header {
 }
 /* add button */
 #addToDo {
-  position: absolute;
+  position: relative;
   height: 2rem;
-  width: 5rem;
-  float: right;
-  margin: 2rem -1rem 0rem 24rem;
+  width: 4rem;
   box-shadow: none;
   color: white;
   background-color: var(--footer-color);
@@ -61,6 +59,7 @@ header {
   font-size: 1.6rem;
 }
 .alert {
+  position: relative;
   height: 10rem;
   width: 10rem;
   display: block;
@@ -87,7 +86,6 @@ header {
   font-size: 1.4rem;
   align-items: center;
   justify-content: center;
-  margin: 1rem 2rem 4rem 2rem;
 }
 
 .inputContainer input[type="text"] {
@@ -96,9 +94,8 @@ header {
   border: 2px solid dodgerblue;
   padding: 0.9rem;
   border-radius: 0.2rem;
-  position: absolute;
   height: 2.2rem;
-  width: 30rem;
+  width: 25rem;
   margin-top: 2rem;
 }
 input[type="text"]:focus {
@@ -124,9 +121,7 @@ button:hover {
 }
 /* clear all button */
 .inputContainer .clearAll {
-  position: absolute;
   color: red;
-  margin: 6rem 0rem 4rem 36rem;
   font-size: 1.2rem;
   height: 2.1rem;
   width: 5rem;
@@ -136,27 +131,22 @@ button:hover {
 }
 /* js html element ul note li  */
 .note {
+  position: relative;
   display: flex;
   list-style: none;
   align-items: center;
   justify-content: space-between;
-  margin: 1rem 10rem 1rem 27rem;
   border-radius: 0.2rem;
+  margin: 1rem auto;
   height: 2rem;
-  width: 29.9rem;
+  width: 24rem;
   box-shadow: 1px 1px 6px 0 #00000070, -1px -1px 3px 0 #ffffff40;
   padding: 0.6rem;
 }
-li span {
-  padding: 0.4rem;
-}
+
 .liTag {
-  position: relative;
   color: blue;
   font-size: 1.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 .liTagInput:checked + span {
   text-decoration: line-through;
@@ -168,16 +158,14 @@ li span {
   height: 1.5rem;
   width: 1.9rem;
   font-size: 1rem;
-  margin: 2rem 1rem 2rem 24rem;
 }
 button > * {
   pointer-events: none;
-  clear: both;
 }
 
 .note #editToDo,
 #saveToDo {
-  margin: 2rem 2rem 2rem 27rem;
+  margin: 0 0 0 27rem;
   color: green;
 }
 #saveToDo {
@@ -185,7 +173,7 @@ button > * {
 }
 .note #deleteToDo {
   color: red;
-  margin: 2rem 2rem 2rem 24rem;
+  margin: 0 0 0 24rem;
 }
 .note #editToDo:hover {
   color: white;
@@ -199,21 +187,34 @@ button > * {
   color: white;
   background-color: red;
 }
-@media (max-width: 70rem) {
-  .note {
-    margin: 1rem 1rem 1rem 12.5rem;
+@media (max-width: 80rem) {
+  #heading-of-todos {
+    font-size: 1.9rem;
+  }
+  #today {
+    all: unset;
+  }
+  #day-date {
+    all: unset;
+    display: inline;
+    margin: 3rem 5rem 0 0;
+    font-size: 1.5rem;
   }
 }
 @media (max-width: 50rem) {
   #title-of-todos {
     width: 100%;
   }
-  .note {
-    margin: 1rem 1rem 1rem 3rem;
+  body {
+    color: green;
   }
-  .inputContainer input[type="text"] {
-    width: 21rem;
-    margin: 3rem 1rem 1rem -7rem;
+  .note {
+    margin: 1rem 1rem;
+  }
+  .inputContainer .clearAll {
+    font-size: 0.7rem;
+    width: 3rem;
+    height: 2rem;
   }
   #heading-of-todos {
     font-size: 1.9rem;
@@ -227,16 +228,17 @@ button > * {
     margin: 3rem 5rem 0 0;
     font-size: 1.5rem;
   }
-  #addToDo {
-    margin: 4rem 1rem 2rem 19rem;
-  }
-  .inputContainer .clearAll {
-    margin: 4rem 1rem 2rem 30rem;
+  .inputContainer input[type="text"] {
+    height: 2rem;
+    width: 17rem;
   }
 }
-@media (max-width: 25rem) {
+@media (max-width: 30rem) {
   #title-of-todos {
     width: 100vw;
+  }
+  body {
+    color: yellow;
   }
   #heading-of-todos {
     font-size: 1.3rem;
@@ -259,37 +261,38 @@ button > * {
   .inputContainer input[type="text"] {
     height: 2rem;
     width: 17rem;
-    margin: 2rem 6rem 0rem 1.5rem;
   }
   #addToDo {
     width: 3rem;
-    margin: 4rem 1rem 2rem 10.5rem;
   }
   .inputContainer .clearAll {
     width: 4rem;
     height: 1.9rem;
     font-size: 0.9rem;
-    margin: 4rem 1rem 2rem 18.4rem;
   }
   .note {
-    margin: 3rem auto;
-    width: 20rem;
+    margin: 1rem 0.2rem;
+    width: 21rem;
   }
   .note #editToDo,
   #saveToDo {
-    margin: 3rem 2rem 3rem 17rem;
+    margin: 0 20.5rem;
     color: green;
   }
   .note #deleteToDo {
-    margin: 3rem 2rem 3rem 14.7rem;
+    margin: 0 23rem;
   }
 }
-@media (max-width: 15rem) {
+@media (max-width: 25rem) {
   #title-of-todos {
     width: 100%;
   }
+  body {
+    color: pink;
+    width: 100%;
+  }
   #heading-of-todos {
-    font-size: 1.9rem;
+    font-size: 1.2rem;
   }
   #today {
     all: unset;
@@ -297,14 +300,61 @@ button > * {
   #day-date {
     all: unset;
     display: inline;
-    margin: 3rem 5rem 0 0;
-    font-size: 1.5rem;
+    margin: 3rem;
+    font-size: 1.2rem;
   }
-  .inputContainer {
-    width: 15em;
+
+  .inputContainer input[type="text"] {
+    height: 2rem;
+    width: 17rem;
+  }
+  #addToDo {
+    width: 2rem;
+  }
+  .inputContainer .clearAll {
+    font-size: 0.8rem;
+    margin: 1rem auto;
+    display: block;
+  }
+}
+@media (max-width: 20rem) {
+  body {
+    color: purple;
+  }
+  .note {
+    width: 12rem;
+  }
+  #heading-of-todos {
+    font-size: 1.4rem;
+    padding: 1rem;
+  }
+  #day-date {
+    font-size: 1rem;
   }
   .inputContainer input[type="text"] {
-    height: 2.2rem;
-    width: 19rem;
+    height: 2rem;
+    width: 13rem;
+  }
+  #addToDo {
+    width: 2rem;
+  }
+  .inputContainer .clearAll {
+    width: 4rem;
+    height: 1.4rem;
+    font-size: 0.9rem;
+    margin: 1rem auto;
+    display: flex;
+  }
+  .note {
+    margin: 1rem 0.2rem;
+    width: 14rem;
+  }
+  .note #editToDo,
+  #saveToDo {
+    margin: 0 13.6rem;
+    color: green;
+  }
+  .note #deleteToDo {
+    margin: 0 16rem;
   }
 }
