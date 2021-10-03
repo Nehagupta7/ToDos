@@ -29,21 +29,20 @@
 
       <!-- notes section Start -->
       <div class="inputContainer">
-        <!-- <form onsubmit="event.preventDefault() "> -->
-        <input
-          type="text"
-          name="test"
-          class="inputToDo"
-          placeholder="ToDos Here..(only 20 character)"
-          maxlength="20"
-          onchange=" addnote()"
-        />
+        <form id="form">
+          <input
+            type="text"
+            name="test"
+            class="inputToDo"
+            placeholder="ToDos Here...(only 20 character)"
+            maxlength="20"
+          />
 
-        <button id="clearAll" class="clearAll button">clear all</button>
-        <button id="addToDo" class="addToDo button">
-          <i class="fa fa-plus" aria-hidden="true"></i>
-        </button>
-        <!-- </form> -->
+          <button id="addToDo" class="addToDo button">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+          </button>
+          <button id="clearAll" class="clearAll button">clear all</button>
+        </form>
       </div>
 
       <!-- notes section End -->
