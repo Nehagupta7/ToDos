@@ -1,360 +1,231 @@
 * {
-  padding: 0px;
-  margin: 0px;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-}
-:root {
-  --header-color: #d8d4f34d;
-  --footer-color: #2322f7;
+  font-family: "Kaushan Script", cursive;
+  color: white;
 }
 body {
+  background-image: linear-gradient(rgba(63, 61, 61, 0.459), rgb(55, 53, 56)),
+    url(images/background/purple.jpg);
+
+  background-position: center;
+  background-repeat: no-repeat;
   height: 100vh;
   width: 100%;
-  background-color: var(--header-color);
-  color: white;
-}
-header {
-  width: 100%;
-  height: 10rem;
   display: flex;
-  justify-content: space-between;
-  background-color: var(--footer-color);
 }
-/* heading */
-#heading-of-todos {
-  font-size: 3rem;
-  padding-top: 2rem;
-}
-#heading-of-todos i {
-  padding: 2rem;
-}
-/* time or date */
-#day-date {
-  display: inline-block;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
+.game-container {
+  height: 100vh;
+  width: 60%;
   margin: auto;
-  font-size: 1.5rem;
 }
-#today {
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  margin: -1rem 15rem 2rem 1rem;
+h2 {
+  text-align: center;
+  margin: 1rem;
+  font-size: 2rem;
 }
-/* add button */
-#addToDo {
-  position: relative;
-  height: 2rem;
-  width: 4rem;
-  box-shadow: none;
-  color: white;
-  background-color: var(--footer-color);
-  font-size: 1.3rem;
-}
-
-#addToDo:hover {
-  color: white;
-  font-size: 1.6rem;
-}
-.alert {
-  position: relative;
-  height: 10rem;
-  width: 10rem;
-  display: block;
-  margin: 0 auto;
-  border: 0.1rem solid black;
-  color: black;
-  font-size: bolder;
-  padding: 2rem;
-  color: red;
-  background-color: #b5b5b5;
-  border-radius: 1rem;
-}
-.okButton {
-  background-color: blue;
-  margin: 2rem auto;
-  width: 5rem;
-  color: white;
-}
-
-/* inpu button */
-
-.inputContainer {
+.game-start {
   display: flex;
+  align-items: center;
   font-size: 1.4rem;
+
+  justify-content: space-between;
+  margin: auto 1rem;
+}
+.timer.big {
+  animation: width 0.5s linear;
+}
+@keyframes width {
+  0% {
+    color: rgb(240, 22, 22);
+    font-size: 1.5rem;
+  }
+
+  50% {
+    color: white;
+    font-size: 1rem;
+  }
+
+  100% {
+    color: rgb(240, 22, 22);
+    font-size: 1.5rem;
+  }
+}
+.game-over {
+  display: none;
+}
+.game-over.visible {
+  position: fixed;
+  color: white;
+  background-color: rgba(40, 39, 41, 0.459);
+  z-index: 99;
+  height: 100vh;
+  width: 60%;
+  font-size: 4rem;
+  display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
-
-.inputContainer input[type="text"] {
+.replay-btn {
+  height: 3.5rem;
+  width: 9rem;
   background-color: transparent;
-  outline: none;
-  border: 2px solid dodgerblue;
-  padding: 0.9rem;
-  border-radius: 0.2rem;
-  height: 2.2rem;
-  width: 25rem;
-  margin-top: 2rem;
+  color: white;
+  font-size: 2rem;
+  border: 0.1em solid white;
+  padding: 0.1rem;
+  border-radius: 0.5rem;
+  transition: color 0.2s ease-in;
 }
-input[type="text"]:focus {
-  border-color: dodgerblue;
-  box-shadow: 0 0 8px 0 dodgerblue;
-  transition: 0.2s;
+.replay-btn:hover {
+  color: black;
+  background-color: white;
+  transition: color 0.8s ease-out;
 }
-/* btton set */
-button {
-  height: 1.9rem;
-  width: 2.2rem;
-  border-radius: 6px;
-  font-size: 1.3rem;
-  transition: all 0.2s ease-in;
-  outline: none;
-  border: none;
-  box-shadow: 1px 1px 3px 0 black, -1px -1px 3px 0 white;
-}
-button:hover {
-  border-color: initial;
-  box-shadow: 0 0 8px 0 dodgerblue;
-  transition: 0.2s;
-}
-/* clear all button */
-.inputContainer .clearAll {
-  color: red;
-  font-size: 1.2rem;
-  height: 2.1rem;
-  width: 5rem;
-}
-[contenteditable] {
-  outline: 0px solid transparent;
-}
-/* js html element ul note li  */
-.note {
+
+.card-container {
+  height: 80vh;
+  width: 100%;
   position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-gap: 0.3rem;
+  overflow: hidden;
+  perspective: 50rem;
+}
+.card {
   display: flex;
-  list-style: none;
   align-items: center;
-  justify-content: space-between;
-  border-radius: 0.2rem;
-  margin: 1rem auto;
-  height: 2rem;
-  width: 24rem;
-  box-shadow: 1px 1px 6px 0 #00000070, -1px -1px 3px 0 #ffffff40;
-  padding: 0.6rem;
+  justify-content: center;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition: transform 0.2s linear;
 }
-
-.liTag {
-  color: blue;
-  font-size: 1.2rem;
-}
-.liTagInput:checked + span {
-  text-decoration: line-through;
-  color: red;
-}
-
-.note .button {
-  position: absolute;
-  height: 1.5rem;
-  width: 1.9rem;
-  font-size: 1rem;
-}
-button > * {
+.card.visible {
+  transform: rotatey(180deg);
   pointer-events: none;
 }
 
-.note #editToDo,
-#saveToDo {
-  margin: 0 0 0 27rem;
-  color: green;
+.back-face.visible {
+  transform: rotatey(180deg);
 }
-#saveToDo {
-  display: none;
+.front-face {
+  transform: rotatey(0deg);
+  transition: 0.1s linear;
 }
-.note #deleteToDo {
-  color: red;
-  margin: 0 0 0 24rem;
+.front-face,
+.back-face {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  transition: 0.5s;
+  width: 7rem;
+  height: 9rem;
 }
-.note #editToDo:hover {
-  color: white;
-  background-color: green;
+
+.back-face img {
+  width: 7rem;
+  height: 9rem;
+  z-index: 6;
+  border-radius: 0.5rem;
 }
-.note #saveToDo:hover {
-  color: white;
-  background-color: green;
+.front-face img {
+  width: 4rem;
+  height: 5rem;
+  border-radius: 0.5rem;
 }
-.note #deleteToDo:hover {
-  color: white;
-  background-color: red;
+.card.matched .front-face img {
+  width: 5rem;
+  height: 7rem;
+  border-radius: 0.5rem;
+  animation: moving 1s linear;
 }
-@media (max-width: 80rem) {
-  #heading-of-todos {
-    font-size: 1.9rem;
+
+@keyframes moving {
+  0% {
+    transform: rotateY(50deg);
   }
-  #today {
-    all: unset;
+  30% {
+    transform: rotateY(30deg);
   }
-  #day-date {
-    all: unset;
-    display: inline;
-    margin: 3rem 5rem 0 0;
-    font-size: 1.5rem;
+  60% {
+    transform: rotateY(80deg);
+  }
+  100% {
+    transform: rotateY(120deg);
   }
 }
-@media (max-width: 50rem) {
-  #title-of-todos {
-    width: 100%;
+@media (max-width: 60rem) {
+  .card-container {
+    grid-template-columns: repeat(4, auto);
   }
-  body {
-    color: green;
+
+  .back-face img {
+    width: 5rem;
+    height: 7rem;
   }
-  .note {
-    margin: 1rem 1rem;
+  .front-face,
+  .back-face {
+    background-color: black;
+    width: 5rem;
+    height: 7rem;
   }
-  .inputContainer .clearAll {
-    font-size: 0.7rem;
-    width: 3rem;
-    height: 2rem;
-  }
-  #heading-of-todos {
-    font-size: 1.9rem;
-  }
-  #today {
-    all: unset;
-  }
-  #day-date {
-    all: unset;
-    display: inline;
-    margin: 3rem 5rem 0 0;
-    font-size: 1.5rem;
-  }
-  .inputContainer input[type="text"] {
-    height: 2rem;
-    width: 17rem;
+  .card.matched .front-face img {
+    width: 4rem;
+    height: 5rem;
   }
 }
 @media (max-width: 30rem) {
-  #title-of-todos {
-    width: 100vw;
-  }
-  body {
-    color: yellow;
-  }
-  #heading-of-todos {
-    font-size: 1.3rem;
-    margin: 2rem 1rem 2rem 0.5rem;
-  }
-  #heading-of-todos i {
-    font-size: 1rem;
-    padding: 0.5rem;
-  }
-  #today {
-    all: unset;
-  }
-  #day-date {
-    all: unset;
-    display: inline;
-    margin: 3.5rem 1rem 0.1rem 0.1rem;
-    font-size: 1rem;
+  .card-container {
+    grid-template-columns: repeat(3, auto);
   }
 
-  .inputContainer input[type="text"] {
-    height: 2rem;
-    width: 17rem;
-  }
-  #addToDo {
-    width: 3rem;
-  }
-  .inputContainer .clearAll {
+  .back-face img {
     width: 4rem;
-    height: 1.9rem;
-    font-size: 0.9rem;
+    height: 5rem;
   }
-  .note {
-    margin: 1rem 0.2rem;
-    width: 21rem;
+  .front-face img {
+    width: 2.5rem;
+    height: 3rem;
   }
-  .note #editToDo,
-  #saveToDo {
-    margin: 0 20.5rem;
-    color: green;
+  .front-face,
+  .back-face {
+    background-color: black;
+    width: 4rem;
+    height: 5rem;
   }
-  .note #deleteToDo {
-    margin: 0 23rem;
+  .card.matched .front-face img {
+    width: 3rem;
+    height: 3rem;
   }
-}
-@media (max-width: 25rem) {
-  #title-of-todos {
+  .game-over.visible {
+    font-size: 2.5rem;
+    height: 100vh;
     width: 100%;
   }
-  body {
-    color: pink;
+  .replay-btn {
+    font-size: 1.5rem;
+    height: 3rem;
+    width: 7rem;
+  }
+  .game-container {
     width: 100%;
-  }
-  #heading-of-todos {
-    font-size: 1.2rem;
-  }
-  #today {
-    all: unset;
-  }
-  #day-date {
-    all: unset;
-    display: inline;
-    margin: 3rem;
-    font-size: 1.2rem;
-  }
-
-  .inputContainer input[type="text"] {
-    height: 2rem;
-    width: 17rem;
-  }
-  #addToDo {
-    width: 2rem;
-  }
-  .inputContainer .clearAll {
-    font-size: 0.8rem;
-    margin: 1rem auto;
-    display: block;
   }
 }
 @media (max-width: 20rem) {
-  body {
-    color: purple;
+  .card-container {
+    grid-template-columns: repeat(2, auto);
+    height: 100vh;
+    width: 100%;
+    overflow: visible;
+    margin-bottom: 1rem;
   }
-  .note {
-    width: 12rem;
-  }
-  #heading-of-todos {
-    font-size: 1.4rem;
-    padding: 1rem;
-  }
-  #day-date {
-    font-size: 1rem;
-  }
-  .inputContainer input[type="text"] {
-    height: 2rem;
-    width: 13rem;
-  }
-  #addToDo {
-    width: 2rem;
-  }
-  .inputContainer .clearAll {
-    width: 4rem;
-    height: 1.4rem;
-    font-size: 0.9rem;
-    margin: 1rem auto;
-    display: flex;
-  }
-  .note {
-    margin: 1rem 0.2rem;
-    width: 14rem;
-  }
-  .note #editToDo,
-  #saveToDo {
-    margin: 0 13.6rem;
-    color: green;
-  }
-  .note #deleteToDo {
-    margin: 0 16rem;
+  .card {
+    grid-gap: 1rem;
+    margin: 3rem 0;
   }
 }
